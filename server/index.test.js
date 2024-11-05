@@ -1,10 +1,15 @@
-import { expect } from "chai";
+import { expect } from "chai"
+import { initializeTestDb } from "./helpers/test.js"
 
 const base_url = "http://localhost:3001"
 
-describe("Get tasks",() => {
+describe("GET tasks",() => {
+    before(() => {
+        initializeTestDb()
+    })
+
     it ("should get all tasks",async() => {
-        const response = await fetch("http:localhost:3001/")
+        const response = await fetch(base_url + "/")
         const data = await response.json()
 
         expect(response.status).to.equal(200)
