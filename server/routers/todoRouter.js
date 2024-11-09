@@ -1,10 +1,15 @@
 import { pool } from "../helpers/db.js"
 import { Router } from "express"
-import { emptyOrRows } from "../helpers/utils.js"
+//import { emptyOrRows } from "../helpers/utils.js"
 import { auth } from "../helpers/auth.js"
+import { postTask, getTasks,} from "../controllers/TaskController.js"
 
 const router = Router()
 
+router.get("/", getTasks)
+router.post("/create", auth, postTask)
+
+/*
 router.get("/",(req, res,next) => {
     pool.query("select * from task",(error, result)=> {
         if (error) {
@@ -25,6 +30,7 @@ router.post("/create",auth,(req,res,next) => {
         }
     )
 })
+*/
 
 router.delete("/delete/:id",auth,(req,res,next) => {
     const id = parseInt(req.params.id)
