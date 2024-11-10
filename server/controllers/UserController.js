@@ -1,4 +1,4 @@
-import { hash } from  "bcrypt"
+import { hash, compare } from "bcrypt"
 import { insertUser, selectUserByEmail } from "../models/User.js"
 import { ApiError } from "../helpers/ApiError.js"
 import jwt from "jsonwebtoken"
